@@ -46,6 +46,10 @@ input {
   color: #ffffff;
 }
 
+a {
+  color: #ffffff;
+}
+
 button {
   display: block;
   width: 20%;
