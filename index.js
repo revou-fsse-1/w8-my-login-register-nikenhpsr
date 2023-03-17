@@ -28,9 +28,12 @@ form.addEventListener("submit", function (event) {
     }
   } else {
     // Check if the email and password are correct
-    if (emailInput === "user@mail.com" && passwordInput === "Password123") {
+    if (
+      emailInput.value === "user@mail.com" &&
+      passwordInput.value === "Password123"
+    ) {
       // Redirect the user to the homepage
-      location.href("homepage.html");
+      location.href = "homepage.html";
     } else {
       // Display an error message
       if (!emailRegex.test(emailInput.value)) {
