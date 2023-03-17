@@ -12,7 +12,7 @@
       <div class="container">
         <h1>Welcome to ABC</h1>
         <p>Glad to have you back!</p>
-        <form action="">
+        <form id="login">
           <fieldset>
             <label for="email"
               >Email:
@@ -22,7 +22,7 @@
                 id="email"
                 placeholder="Enter your email address"
                 required
-            /></label>
+            /><small></small></label>
             <label for="password"
               >Password:
               <input
@@ -31,13 +31,16 @@
                 id="password"
                 placeholder="Password"
                 required
-            /></label>
-            <p>Not part of our communities? <a href="./register.html">Register Here</a></p>
-            <button class="login" onclick="validate()">Login</button>
+            /><small></small></label>
+            <p>
+              Not part of our communities?
+              <a href="./register.html">Register Here</a>
+            </p>
           </fieldset>
+          <button type="submit">Login</button>
         </form>
       </div>
     </main>
+    <script src="./index.js"></script>
   </body>
-  <script src="./index.js"></script>
 </html>
