@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a simple website to store information. You can Add value, Edit, and Delete it. Bear in mind that the table that I created is not using Regex yet. You can to homepage by using this account. This web can't redirect when you are putting a correct emai and password.
+This is a simple website to store information. You can Add value, Edit, and Delete it. Bear in mind that the table that I created is not using Regex yet. You can to homepage by using this account. This web can't redirect when you are putting a correct email and password.
 ```
 email : user@mail.com
 password : Password123
