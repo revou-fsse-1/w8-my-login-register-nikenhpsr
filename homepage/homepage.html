@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CRUD Table using Local Storage</title>
+  </head>
+  <body>
+    <h1>CRUD Table using Local Storage</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <br>
+    <button onclick="addNew()">Add New</button>
+    <script>
+      let data = JSON.parse(localStorage.getItem("tableData")) || [];
+
+      function renderTable() {
+        const tableBody = document.getElementById("table-body");
+        tableBody.innerHTML = "";
+
+        data.forEach((item, index) => {
+          const row = document.createElement("tr");
+
+          const idCol = document.createElement("td");
+          idCol.innerText = item.id;
+          row.appendChild(idCol);
+
+          const nameCol = document.createElement("td");
+          nameCol.innerText = item.name;
+          row.appendChild(nameCol);
+
+          const emailCol = document.createElement("td");
+          emailCol.innerText = item.email;
+          row.appendChild(emailCol);
+
+          const actionsCol = document.createElement("td");
+
+          const editButton = document.createElement("button");
+          editButton.innerText = "Edit";
+          editButton.addEventListener("click", () => {
+            editItem(index);
+          });
+          actionsCol.appendChild(editButton);
+
+          const deleteButton = document.createElement("button");
+          deleteButton.innerText = "Delete";
+          deleteButton.addEventListener("click", () => {
+            deleteItem(index);
+          });
+          actionsCol.appendChild(deleteButton);
+
+          row.appendChild(actionsCol);
+
+          tableBody.appendChild(row);
+        });
+      }
+
+      function addNew() {
+        const name = prompt("Enter name:");
+        const email = prompt("Enter email:");
+        const id = data.length + 1;
+
+        data.push({ id, name, email });
+        localStorage.setItem("tableData", JSON.stringify(data));
+        renderTable();
+      }
+
+      function editItem(index) {
+        const item = data[index];
+        const newName = prompt(`Enter new name for ${item.name}:`, item.name);
+        const newEmail = prompt(`Enter new email for ${item.email}:`, item.email);
+
+        data[index] = { ...item, name: newName, email: newEmail };
+        localStorage.setItem("tableData", JSON.stringify(data));
+        renderTable();
+      }
+
+      function deleteItem(index) {
+        const confirmation = confirm("Are you sure you want to delete this item?");
+        if (confirmation) {
+          data.splice(index, 1);
+          localStorage.setItem("tableData", JSON.stringify(data));
+          renderTable();
+        }
+      }
+
+      renderTable();
+    </script>
+  </body>
+</html>

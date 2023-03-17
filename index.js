@@ -27,7 +27,7 @@ form.addEventListener("submit", function(event) {
     // Check if the email and password are correct
     if (emailRegex.test(emailInput.value) && passwordRegex.test(passwordInput.value)) {
       // Redirect the user to the homepage
-      window.location.href = "../homepage.html";
+      window.location.href = "../homepage/homepage.html";
     } else {
       // Display an error message
       if (!emailRegex.test(emailInput.value)) {
